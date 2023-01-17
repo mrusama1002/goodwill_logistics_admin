@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PalletController;
 use App\Http\Controllers\Admin\PostcodeController;
 use App\Http\Controllers\Admin\PostcodeGroupController;
+use App\Http\Controllers\Admin\CustomerController;
 
 use App\Http\Controllers\Admin\OrderController;
 use Illuminate\Support\Facades\Route;
@@ -46,4 +47,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function ()
 
 
     Route::resource('order', OrderController::class, ['names' => 'orders']);
+    Route::get('customers', [CustomerController::class, 'index'])->name('admin.customers.index');
+    Route::post('order-status-update', [OrderController::class, 'updateStatus'])->name('admin.order-status-update');
 });

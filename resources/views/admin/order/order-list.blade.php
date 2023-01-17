@@ -18,7 +18,8 @@
                               <th>Deliver To</th>
                               <th>First Name</th>
                               <th>Grand Total</th>
-                              <th>Status</th>
+                               <th>Payment Status</th>
+                               <th>Delivery Status</th>
                               <th>Create Date</th>
                               <th>Action</th>
                            </tr>
@@ -36,7 +37,8 @@
                               <td>{{$order->deliver_to ?? 'N/A'}}</td>
                               <td>{{$order->colFirstName ?? 'N/A'}}</td>
                               <td>{{$order->grandTotal ?? 'N/A'}}</td>
-                              <td><span class="{{$status}}">{{@$order->transaction->Status == 0 ? 'Unpaid':'paid'}}</span></td>
+                               <td><span class="{{$status}}">{{@$order->transaction->Status == 0 ? 'Unpaid':'paid'}}</span></td>
+                               <td class="text-capitalize">{{$order->deliveryStatus ?? 'N/A'}}</td>
                               <td>{{$order->CreateDate}}</td>
                               <td><a href="{{route('orders.show',$order->id)}}"><i class="fa fa-eye"></i></a></td>
                            </tr>
@@ -54,7 +56,7 @@
       <div class="container-fluid">
          <div class="row">
             <div class="col-md-6">
-               2016 - 2019 &copy; Adminto theme by <a href="">Coderthemes</a> 
+               2023 @ Goodwill Logistics
             </div>
             <div class="col-md-6">
                <div class="text-md-right footer-links d-none d-sm-block">

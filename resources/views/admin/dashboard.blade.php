@@ -221,7 +221,7 @@
             </div>
             <!-- end col -->
          </div>
-         
+
          <div class="row">
             <div class="col-xl-12">
                <div class="card-box">
@@ -277,7 +277,7 @@
                             @empty
                                 <tr><td>No Data Found</td></tr>
                             @endforelse
-                           
+
                         </tbody>
                      </table>
                   </div>
@@ -285,7 +285,7 @@
             </div>
             <!-- end col -->
          </div>
-         <!-- end row -->        
+         <!-- end row -->
       </div>
       <!-- container -->
    </div>
@@ -295,7 +295,7 @@
       <div class="container-fluid">
          <div class="row">
             <div class="col-md-6">
-               2016 - 2019 &copy; Adminto theme by <a href="">Coderthemes</a> 
+               2023 @ Goodwill Logistics
             </div>
             <div class="col-md-6">
                <div class="text-md-right footer-links d-none d-sm-block">

@@ -32,6 +32,10 @@ class PostcodeController
         $postcodesLineBreak = explode("\r\n", $request->postcode);
 
         foreach ($postcodesLineBreak as $postCodes) {
+            $postCodeExist = Postcode::where('post_code', $postCodes)->first();
+            if ($postCodeExist) {
+                return redirect()->back()->with('message', 'Post Code Already Exist');
+            }
             Postcode::create([
                 'post_code' => $postCodes,
                 'group_id' => $request->group
