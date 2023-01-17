@@ -72,7 +72,7 @@
                                             <td class="pt-5 text-black pl-3">
                                                 {{$palletrate->price}}
                                             </td>
-                                            
+
                                             <td class="pt-5 text-black pl-3">
                                                 {{$palletrate->quantity}}
                                             </td>
@@ -105,7 +105,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6">
-                        2016 - 2019 &copy; Adminto theme by <a href="">Coderthemes</a>
+                        2023 @ Goodwill Logistics
                     </div>
                     <div class="col-md-6">
                         <div class="text-md-right footer-links d-none d-sm-block">

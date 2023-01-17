@@ -12,6 +12,9 @@ class Order extends Model
     protected $guarded = ['_token'];
     protected $primaryKey = 'id';
 
+    const CREATED_AT = 'CreateDate';
+    const UPDATED_AT = 'LastModified';
+
     function transaction()
     {
         return $this->belongsTo(Transaction::class, 'id', 'Order_Id');
