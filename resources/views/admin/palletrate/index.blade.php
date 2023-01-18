@@ -41,11 +41,8 @@
                                     <thead>
                                     <tr>
 
-                                        <th>Id</th>
                                         <th>Group</th>
-                                        <th>Service Type</th>
-                                        <th>Price</th>
-                                        <th>Quantity</th>
+                                        <th>Last Modified</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -54,30 +51,15 @@
 
                                     @foreach($palletrates as  $palletrate)
                                         <tr>
-                                            <td class="pt-5 text-black pl-3">
-                                                {{$palletrate->pallet_rate_id}}
+                                            <td class="text-black pl-3">
+                                                {{@$palletrate->group_name}}
                                             </td>
 
-
-                                            <td class="pt-5 text-black pl-3">
-                                                {{@$palletrate->group->group_name}}
+                                            <td class="text-black pl-3">
+                                                {{date('d-m-Y',strtotime($palletrate->palletrates->updated_date))}}
                                             </td>
-
-
-                                            <td class="pt-5 text-black pl-3">
-                                                {{@$palletrate->serviceType->service_name}}
-                                            </td>
-
-
-                                            <td class="pt-5 text-black pl-3">
-                                                {{$palletrate->price}}
-                                            </td>
-
-                                            <td class="pt-5 text-black pl-3">
-                                                {{$palletrate->quantity}}
-                                            </td>
-                                            <td class="pt-5 text-black pl-3">
-                                <a href="{{route('pallet.edit',$palletrate->pallet_rate_id)}}"><i class="fa fa-edit"></i></a>
+                                            <td class="text-black pl-3">
+                                <a href="{{route('pallet.edit',$palletrate->group_id)}}"><i class="fa fa-edit"></i></a>
                              </td>
 
                                         </tr>

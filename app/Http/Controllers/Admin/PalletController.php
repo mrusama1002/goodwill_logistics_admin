@@ -16,7 +16,7 @@ class PalletController
 {
     public function index()
     {
-        $palletrates = Palletrate::with('serviceType', 'postCode', 'group')->get();
+        $palletrates = Postgroup::with('palletrates')->whereHas('palletrates')->get();
         return view('admin.palletrate.index', compact('palletrates'));
     }
 
@@ -192,7 +192,8 @@ class PalletController
 
     public function edit($id)
     {
-        $palletrate = Palletrate::find($id);
+        $palletrate = Palletrate::where('group_id',$id)->get();
+        // dd($palletrate);
         $groups = Postgroup::all();
         return view('admin.palletrate.edit', compact('palletrate','groups'));
     }
@@ -200,14 +201,7 @@ class PalletController
 
     public function update(Request $request, $id)
     {
-        // $palletrate = Palletrate::find($id);
-        // $palletrate->price = $request->price;
-        // $palletrate->quantity = $request->qty;
-        // $palletrate->product_id = $request->product_id;
-        // $palletrate->service_type_id = $request->service_type_id;
-        // $palletrate->group_id = $request->group_id;
-        
-        // $palletrate->save();
+        // dd($request->all());
         $groupID = $request->group_id;
         $qtys = $request->qty;
         $mini = $request->mini;
@@ -225,7 +219,18 @@ class PalletController
         foreach ($qtys as $key => $qty) {
            if($mini){
             if($mini[$key]){
-            $pallet = Palletrate::find($id);
+            $pallet = Palletrate::where('group_id',$groupID)->where('service_type_id',1)->where('product_id',1)->where('quantity',$qty)->first();
+            if($pallet){
+            $pallet->group_id = $groupID;
+            $pallet->service_type_id = 1;
+            $pallet->product_id = 1;
+            $pallet->quantity = $qty;
+            $pallet->price = $mini[$key];
+            $pallet->created_date = Carbon::now();
+            $pallet->updated_date = Carbon::now();
+            $pallet->save();
+            }else{
+            $pallet = new Palletrate();
             $pallet->group_id = $groupID;
             $pallet->service_type_id = 1;
             $pallet->product_id = 1;
@@ -235,122 +240,232 @@ class PalletController
             $pallet->updated_date = Carbon::now();
             $pallet->save();
             }
+            }
            }
            if($miniUR){
             if($miniUR[$key]){
-            $pallet = Palletrate::find($id);
-            $pallet->group_id = $groupID;
-            $pallet->service_type_id = 2;
-            $pallet->product_id = 1;
-            $pallet->quantity = $qty;
-            $pallet->price = $miniUR[$key];
-            $pallet->created_date = Carbon::now();
-            $pallet->updated_date = Carbon::now();
-            $pallet->save();
+                $pallet = Palletrate::where('group_id',$groupID)->where('service_type_id',2)->where('product_id',1)->where('quantity',$qty)->first();
+                if($pallet){
+                $pallet->group_id = $groupID;
+                $pallet->service_type_id = 2;
+                $pallet->product_id = 1;
+                $pallet->quantity = $qty;
+                $pallet->price = $miniUR[$key];
+                $pallet->created_date = Carbon::now();
+                $pallet->updated_date = Carbon::now();
+                $pallet->save();
+                }else{
+                $pallet = new Palletrate();
+                $pallet->group_id = $groupID;
+                $pallet->service_type_id = 2;
+                $pallet->product_id = 1;
+                $pallet->quantity = $qty;
+                $pallet->price = $miniUR[$key];
+                $pallet->created_date = Carbon::now();
+                $pallet->updated_date = Carbon::now();
+                $pallet->save();
+                }
             }
            }
            if($qtr){
             if($qtr[$key]){
-            $pallet = Palletrate::find($id);
-            $pallet->group_id = $groupID;
-            $pallet->service_type_id = 1;
-            $pallet->product_id = 2;
-            $pallet->quantity = $qty;
-            $pallet->price = $qtr[$key];
-            $pallet->created_date = Carbon::now();
-            $pallet->updated_date = Carbon::now();
-            $pallet->save();
+                $pallet = Palletrate::where('group_id',$groupID)->where('service_type_id',1)->where('product_id',2)->where('quantity',$qty)->first();
+                if($pallet){
+                $pallet->group_id = $groupID;
+                $pallet->service_type_id = 1;
+                $pallet->product_id = 2;
+                $pallet->quantity = $qty;
+                $pallet->price = $qtr[$key];
+                $pallet->created_date = Carbon::now();
+                $pallet->updated_date = Carbon::now();
+                $pallet->save();
+                }else{
+                $pallet = new Palletrate();
+                $pallet->group_id = $groupID;
+                $pallet->service_type_id = 1;
+                $pallet->product_id = 2;
+                $pallet->quantity = $qty;
+                $pallet->price = $qtr[$key];
+                $pallet->created_date = Carbon::now();
+                $pallet->updated_date = Carbon::now();
+                $pallet->save();
+                }
             }
            }
            if($qtrUR){
             if($qtrUR[$key]){
-            $pallet = Palletrate::find($id);
-            $pallet->group_id = $groupID;
-            $pallet->service_type_id = 2;
-            $pallet->product_id = 2;
-            $pallet->quantity = $qty;
-            $pallet->price = $qtrUR[$key];
-            $pallet->created_date = Carbon::now();
-            $pallet->updated_date = Carbon::now();
-            $pallet->save();
+                $pallet = Palletrate::where('group_id',$groupID)->where('service_type_id',2)->where('product_id',2)->where('quantity',$qty)->first();
+                if($pallet){
+                $pallet->group_id = $groupID;
+                $pallet->service_type_id = 2;
+                $pallet->product_id = 2;
+                $pallet->quantity = $qty;
+                $pallet->price = $qtrUR[$key];
+                $pallet->created_date = Carbon::now();
+                $pallet->updated_date = Carbon::now();
+                $pallet->save();
+                }else{
+                $pallet = new Palletrate();
+                $pallet->group_id = $groupID;
+                $pallet->service_type_id = 2;
+                $pallet->product_id = 2;
+                $pallet->quantity = $qty;
+                $pallet->price = $qtrUR[$key];
+                $pallet->created_date = Carbon::now();
+                $pallet->updated_date = Carbon::now();
+                $pallet->save();
+                }
             }
            }
            if($half){
             if($half[$key]){
-            $pallet = Palletrate::find($id);
-            $pallet->group_id = $groupID;
-            $pallet->service_type_id = 1;
-            $pallet->product_id = 2;
-            $pallet->quantity = $qty;
-            $pallet->price = $half[$key];
-            $pallet->created_date = Carbon::now();
-            $pallet->updated_date = Carbon::now();
-            $pallet->save();
+                $pallet = Palletrate::where('group_id',$groupID)->where('service_type_id',1)->where('product_id',3)->where('quantity',$qty)->first();
+                if($pallet){
+                $pallet->group_id = $groupID;
+                $pallet->service_type_id = 1;
+                $pallet->product_id = 3;
+                $pallet->quantity = $qty;
+                $pallet->price = $half[$key];
+                $pallet->created_date = Carbon::now();
+                $pallet->updated_date = Carbon::now();
+                $pallet->save();
+                }else{
+                $pallet = new Palletrate();
+                $pallet->group_id = $groupID;
+                $pallet->service_type_id = 1;
+                $pallet->product_id = 3;
+                $pallet->quantity = $qty;
+                $pallet->price = $half[$key];
+                $pallet->created_date = Carbon::now();
+                $pallet->updated_date = Carbon::now();
+                $pallet->save();
+                }
             }
            }
            if($halfUR){
             if($halfUR[$key]){
-            $pallet = Palletrate::find($id);
-            $pallet->group_id = $groupID;
-            $pallet->service_type_id = 2;
-            $pallet->product_id = 3;
-            $pallet->quantity = $qty;
-            $pallet->price = $halfUR[$key];
-            $pallet->created_date = Carbon::now();
-            $pallet->updated_date = Carbon::now();
-            $pallet->save();
+                $pallet = Palletrate::where('group_id',$groupID)->where('service_type_id',2)->where('product_id',3)->where('quantity',$qty)->first();
+                if($pallet){
+                $pallet->group_id = $groupID;
+                $pallet->service_type_id = 2;
+                $pallet->product_id = 3;
+                $pallet->quantity = $qty;
+                $pallet->price = $halfUR[$key];
+                $pallet->created_date = Carbon::now();
+                $pallet->updated_date = Carbon::now();
+                $pallet->save();
+                }else{
+                    // dd('asdas',$mini[$key],$groupID);
+                $pallet = new Palletrate();
+                $pallet->group_id = $groupID;
+                $pallet->service_type_id = 2;
+                $pallet->product_id = 3;
+                $pallet->quantity = $qty;
+                $pallet->price = $halfUR[$key];
+                $pallet->created_date = Carbon::now();
+                $pallet->updated_date = Carbon::now();
+                $pallet->save();
+                }
             }
            }
            if($light){
             if($light[$key]){
-            $pallet = Palletrate::find($id);
-            $pallet->group_id = $groupID;
-            $pallet->service_type_id = 1;
-            $pallet->product_id = 4;
-            $pallet->quantity = $qty;
-            $pallet->price = $light[$key];
-            $pallet->created_date = Carbon::now();
-            $pallet->updated_date = Carbon::now();
-            $pallet->save();
+                $pallet = Palletrate::where('group_id',$groupID)->where('service_type_id',1)->where('product_id',4)->where('quantity',$qty)->first();
+                if($pallet){
+                $pallet->group_id = $groupID;
+                $pallet->service_type_id = 1;
+                $pallet->product_id = 4;
+                $pallet->quantity = $qty;
+                $pallet->price = $light[$key];
+                $pallet->created_date = Carbon::now();
+                $pallet->updated_date = Carbon::now();
+                $pallet->save();
+                }else{
+                $pallet = new Palletrate();
+                $pallet->group_id = $groupID;
+                $pallet->service_type_id = 1;
+                $pallet->product_id = 4;
+                $pallet->quantity = $qty;
+                $pallet->price = $light[$key];
+                $pallet->created_date = Carbon::now();
+                $pallet->updated_date = Carbon::now();
+                $pallet->save();
+                }
             }
            }
            if($lightUR){
             if($lightUR[$key]){
-            $pallet = Palletrate::find($id);
-            $pallet->group_id = $groupID;
-            $pallet->service_type_id = 2;
-            $pallet->product_id = 4;
-            $pallet->quantity = $qty;
-            $pallet->price = $lightUR[$key];
-            $pallet->created_date = Carbon::now();
-            $pallet->updated_date = Carbon::now();
-            $pallet->save();
+                $pallet = Palletrate::where('group_id',$groupID)->where('service_type_id',2)->where('product_id',4)->where('quantity',$qty)->first();
+                if($pallet){
+                $pallet->group_id = $groupID;
+                $pallet->service_type_id = 2;
+                $pallet->product_id = 4;
+                $pallet->quantity = $qty;
+                $pallet->price = $lightUR[$key];
+                $pallet->created_date = Carbon::now();
+                $pallet->updated_date = Carbon::now();
+                $pallet->save();
+                }else{
+                $pallet = new Palletrate();
+                $pallet->group_id = $groupID;
+                $pallet->service_type_id = 2;
+                $pallet->product_id = 4;
+                $pallet->quantity = $qty;
+                $pallet->price = $lightUR[$key];
+                $pallet->created_date = Carbon::now();
+                $pallet->updated_date = Carbon::now();
+                $pallet->save();
+                }
             }
            }
            if($full){
             if($full[$key]){
-            $pallet = Palletrate::find($id);
-            $pallet->group_id = $groupID;
-            $pallet->service_type_id = 1;
-            $pallet->product_id = 5;
-            $pallet->quantity = $qty;
-            $pallet->price = $full[$key];
-            $pallet->created_date = Carbon::now();
-            $pallet->updated_date = Carbon::now();
-            $pallet->save();
+                $pallet = Palletrate::where('group_id',$groupID)->where('service_type_id',1)->where('product_id',5)->where('quantity',$qty)->first();
+                if($pallet){
+                $pallet->group_id = $groupID;
+                $pallet->service_type_id = 1;
+                $pallet->product_id = 5;
+                $pallet->quantity = $qty;
+                $pallet->price = $full[$key];
+                $pallet->created_date = Carbon::now();
+                $pallet->updated_date = Carbon::now();
+                $pallet->save();
+                }else{
+                $pallet = new Palletrate();
+                $pallet->group_id = $groupID;
+                $pallet->service_type_id = 1;
+                $pallet->product_id = 5;
+                $pallet->quantity = $qty;
+                $pallet->price = $full[$key];
+                $pallet->created_date = Carbon::now();
+                $pallet->updated_date = Carbon::now();
+                $pallet->save();
+                }
             }
            }
            if($fullUR){
             if($fullUR[$key]){
-            $pallet = Palletrate::find($id);
-            $pallet->group_id = $groupID;
-            $pallet->service_type_id = 2;
-            $pallet->product_id = 5;
-            $pallet->quantity = $qty;
-            $pallet->price = $fullUR[$key];
-            $pallet->created_date = Carbon::now();
-            $pallet->updated_date = Carbon::now();
-            $pallet->save();
+                $pallet = Palletrate::where('group_id',$groupID)->where('service_type_id',2)->where('product_id',5)->where('quantity',$qty)->first();
+                if($pallet){
+                $pallet->group_id = $groupID;
+                $pallet->service_type_id = 2;
+                $pallet->product_id = 5;
+                $pallet->quantity = $qty;
+                $pallet->price = $fullUR[$key];
+                $pallet->created_date = Carbon::now();
+                $pallet->updated_date = Carbon::now();
+                $pallet->save();
+                }else{
+                $pallet = new Palletrate();
+                $pallet->group_id = $groupID;
+                $pallet->service_type_id = 2;
+                $pallet->product_id = 5;
+                $pallet->quantity = $qty;
+                $pallet->price = $fullUR[$key];
+                $pallet->created_date = Carbon::now();
+                $pallet->updated_date = Carbon::now();
+                $pallet->save();
+                }
             }
            }
         }

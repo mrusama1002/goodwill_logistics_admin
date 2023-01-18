@@ -5,13 +5,30 @@
 
             <!-- Start Content-->
             <div class="container-fluid">
+                @php
+                $newDataArray = array();
+            @endphp
+            @foreach ($palletrate as $key => $palletrateData)
+                    @php
+                        $serviceId = $palletrateData->service_type_id;
+                        $groupId = $palletrateData->group_id;
+                        $quantity = $palletrateData->quantity;
+                        $productId = $palletrateData->product_id;
+                        
 
+                        $newDataArray[$serviceId.'_'.$groupId.'_'.$quantity.'_'.$productId] = $palletrateData->price
+                    @endphp
+                        
+            @endforeach
+            @php 
+            $groupId =1;
+            @endphp
                 <div class="row">
 
                     <div class="card-body">
 
                          <form
-                            action="{{route('pallet.update',$palletrate->pallet_rate_id)}}"
+                            action="{{route('pallet.update',$groupId)}}"
                             method="POST"
                             id="posted"
                             enctype="multipart/">
@@ -22,11 +39,12 @@
                                 <label class="col-sm-2  col-form-label">
                                     Group
                                 </label>
+                                
                                 <div class="col-sm-10">
                                     <select name="group_id" class="form-control">
                                         @foreach($groups as $group)
 
-                                            <option value="{{$group->group_id}}" {{$group->group_id == $palletrate->group_id  ? 'Selected' : ''}}>
+                                            <option value="{{$group->group_id}}" {{$group->group_id == $groupId  ? 'Selected' : ''}}>
                                                 {{$group->group_name}}
                                             </option>
                                         @endforeach
@@ -111,19 +129,20 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @for($i = 1; $i <= 10; $i++)
+                                            
+                                            @for($i = 1; $i <=10; $i++)
                                             <tr>
                                                 <td style="max-width: 100px" ><input value="{{$i}}" type="hidden" name="qty[]">{{$i}}</td>
-                                                <td><input  style="max-width: 100px" value="{{$palletrate->quantity == $i && ($palletrate->service_type_id == 1 && $palletrate->product_id == 1) ? $palletrate->price : ''}}" type="text" name="mini[]"></td>
-                                                <td><input  style="max-width: 100px" value="{{$palletrate->quantity == $i && ($palletrate->service_type_id == 2 && $palletrate->product_id == 1) ? $palletrate->price : ''}}" type="text" name="mini_ur[]"></td>
-                                                <td><input  style="max-width: 100px" value="{{$palletrate->quantity == $i && ($palletrate->service_type_id == 1 && $palletrate->product_id == 2) ? $palletrate->price : ''}}" type="text" name="quater[]"></td>
-                                                <td><input  style="max-width: 100px" value="{{$palletrate->quantity == $i && ($palletrate->service_type_id == 2 && $palletrate->product_id == 2) ? $palletrate->price : ''}}" type="text" name="quater_ur[]"></td>
-                                                <td><input  style="max-width: 100px" value="{{$palletrate->quantity == $i && ($palletrate->service_type_id == 1 && $palletrate->product_id == 3) ? $palletrate->price : ''}}" type="text" name="half[]"></td>
-                                                <td><input  style="max-width: 100px" value="{{$palletrate->quantity == $i && ($palletrate->service_type_id == 2 && $palletrate->product_id == 3) ? $palletrate->price : ''}}" type="text" name="half_ur[]"></td>
-                                                <td><input  style="max-width: 100px" value="{{$palletrate->quantity == $i && ($palletrate->service_type_id == 1 && $palletrate->product_id == 4) ? $palletrate->price : ''}}" type="text" name="light[]"></td>
-                                                <td><input  style="max-width: 100px" value="{{$palletrate->quantity == $i && ($palletrate->service_type_id == 2 && $palletrate->product_id == 4) ? $palletrate->price : ''}}" type="text" name="light_ur[]"></td>
-                                                <td><input  style="max-width: 100px" value="{{$palletrate->quantity == $i && ($palletrate->service_type_id == 1 && $palletrate->product_id == 5) ? $palletrate->price : ''}}" type="text" name="full[]"></td>
-                                                <td><input  style="max-width: 100px" value="{{$palletrate->quantity == $i && ($palletrate->service_type_id == 2 && $palletrate->product_id == 5) ? $palletrate->price : ''}}" type="text" name="full_ur[]"></td>
+                                                <td><input  style="max-width: 100px" value="<?=(!empty($newDataArray['1_'.$groupId.'_'.$i.'_1']))?$newDataArray['1_'.$groupId.'_'.$i.'_1']:''?>" type="text" name="mini[]"></td>
+                                                <td><input  style="max-width: 100px" value="<?=(!empty($newDataArray['2_'.$groupId.'_'.$i.'_1']))?$newDataArray['2_'.$groupId.'_'.$i.'_1']:''?>" type="text" name="mini_ur[]"></td>
+                                                <td><input  style="max-width: 100px" value="<?=(!empty($newDataArray['1_'.$groupId.'_'.$i.'_2']))?$newDataArray['1_'.$groupId.'_'.$i.'_2']:''?>" type="text" name="quater[]"></td>
+                                                <td><input  style="max-width: 100px" value="<?=(!empty($newDataArray['2_'.$groupId.'_'.$i.'_2']))?$newDataArray['2_'.$groupId.'_'.$i.'_2']:''?>" type="text" name="quater_ur[]"></td>
+                                                <td><input  style="max-width: 100px" value="<?=(!empty($newDataArray['1_'.$groupId.'_'.$i.'_3']))?$newDataArray['1_'.$groupId.'_'.$i.'_3']:''?>" type="text" name="half[]"></td>
+                                                <td><input  style="max-width: 100px" value="<?=(!empty($newDataArray['2_'.$groupId.'_'.$i.'_3']))?$newDataArray['2_'.$groupId.'_'.$i.'_3']:''?>" type="text" name="half_ur[]"></td>
+                                                <td><input  style="max-width: 100px" value="<?=(!empty($newDataArray['1_'.$groupId.'_'.$i.'_4']))?$newDataArray['1_'.$groupId.'_'.$i.'_4']:''?>" type="text" name="light[]"></td>
+                                                <td><input  style="max-width: 100px" value="<?=(!empty($newDataArray['2_'.$groupId.'_'.$i.'_4']))?$newDataArray['2_'.$groupId.'_'.$i.'_4']:''?>" type="text" name="light_ur[]"></td>
+                                                <td><input  style="max-width: 100px" value="<?=(!empty($newDataArray['1_'.$groupId.'_'.$i.'_5']))?$newDataArray['1_'.$groupId.'_'.$i.'_5']:''?>" type="text" name="full[]"></td>
+                                                <td><input  style="max-width: 100px" value="<?=(!empty($newDataArray['2_'.$groupId.'_'.$i.'_5']))?$newDataArray['2_'.$groupId.'_'.$i.'_5']:''?>" type="text" name="full_ur[]"></td>
                                             </tr>
                                             @endfor
                                         </tbody>

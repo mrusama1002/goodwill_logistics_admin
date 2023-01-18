@@ -12,5 +12,8 @@ class Postgroup extends Model
     protected $primaryKey = 'group_id';
 
 
-
+    public function palletrates()
+    {
+        return $this->belongsTo(Palletrate::class, 'group_id' ,'group_id');
+    }
 }

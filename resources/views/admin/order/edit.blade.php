@@ -109,7 +109,7 @@
                            <input type="text" value="{{$orderUpdate->colPhone}}" class="form-control" name="colPhone" id="">
                         </div>
                         <div class="form-group">
-                           <label for="">Collection Coompany Name</label>
+                           <label for="">Collection Company Name</label>
                            <input type="text" value="{{$orderUpdate->colCompanyName}}" class="form-control" name="colCompanyName" id="">
                         </div>
                         <div class="form-group">
