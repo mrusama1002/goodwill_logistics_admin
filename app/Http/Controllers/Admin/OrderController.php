@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Postgroup;
 use Illuminate\Http\Request;
 use App\Models\Order;
-use App\Models\Servicetype;
+use App\Models\ServiceType;
 use App\Models\CollectionOption;
 use App\Models\DeliveryOption;
 use Carbon\Carbon;
