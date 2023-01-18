@@ -40,7 +40,9 @@
                                <td><span class="{{$status}}">{{@$order->transaction->Status == 0 ? 'Unpaid':'paid'}}</span></td>
                                <td class="text-capitalize">{{$order->deliveryStatus ?? 'N/A'}}</td>
                               <td>{{$order->CreateDate}}</td>
-                              <td><a href="{{route('orders.show',$order->id)}}"><i class="fa fa-eye"></i></a></td>
+                              <td><a href="{{route('orders.show',$order->id)}}"><i class="fa fa-eye p-2 text-success"></i></a>
+                                 <a href="{{route('orders.edit',$order->id)}}"><i class="fa fa-pen text-warning"></i></a>
+                              </td>
                            </tr>
                            @endforeach
                         </tbody>
