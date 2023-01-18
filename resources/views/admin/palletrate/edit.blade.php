@@ -7,6 +7,7 @@
             <div class="container-fluid">
                 @php
                 $newDataArray = array();
+                $groupId  = '';
             @endphp
             @foreach ($palletrate as $key => $palletrateData)
                     @php
@@ -20,9 +21,6 @@
                     @endphp
                         
             @endforeach
-            @php 
-            $groupId =1;
-            @endphp
                 <div class="row">
 
                     <div class="card-body">
@@ -132,17 +130,17 @@
                                             
                                             @for($i = 1; $i <=10; $i++)
                                             <tr>
-                                                <td style="max-width: 100px" ><input value="{{$i}}" type="hidden" name="qty[]">{{$i}}</td>
-                                                <td><input  style="max-width: 100px" value="<?=(!empty($newDataArray['1_'.$groupId.'_'.$i.'_1']))?$newDataArray['1_'.$groupId.'_'.$i.'_1']:''?>" type="text" name="mini[]"></td>
-                                                <td><input  style="max-width: 100px" value="<?=(!empty($newDataArray['2_'.$groupId.'_'.$i.'_1']))?$newDataArray['2_'.$groupId.'_'.$i.'_1']:''?>" type="text" name="mini_ur[]"></td>
-                                                <td><input  style="max-width: 100px" value="<?=(!empty($newDataArray['1_'.$groupId.'_'.$i.'_2']))?$newDataArray['1_'.$groupId.'_'.$i.'_2']:''?>" type="text" name="quater[]"></td>
-                                                <td><input  style="max-width: 100px" value="<?=(!empty($newDataArray['2_'.$groupId.'_'.$i.'_2']))?$newDataArray['2_'.$groupId.'_'.$i.'_2']:''?>" type="text" name="quater_ur[]"></td>
-                                                <td><input  style="max-width: 100px" value="<?=(!empty($newDataArray['1_'.$groupId.'_'.$i.'_3']))?$newDataArray['1_'.$groupId.'_'.$i.'_3']:''?>" type="text" name="half[]"></td>
-                                                <td><input  style="max-width: 100px" value="<?=(!empty($newDataArray['2_'.$groupId.'_'.$i.'_3']))?$newDataArray['2_'.$groupId.'_'.$i.'_3']:''?>" type="text" name="half_ur[]"></td>
-                                                <td><input  style="max-width: 100px" value="<?=(!empty($newDataArray['1_'.$groupId.'_'.$i.'_4']))?$newDataArray['1_'.$groupId.'_'.$i.'_4']:''?>" type="text" name="light[]"></td>
-                                                <td><input  style="max-width: 100px" value="<?=(!empty($newDataArray['2_'.$groupId.'_'.$i.'_4']))?$newDataArray['2_'.$groupId.'_'.$i.'_4']:''?>" type="text" name="light_ur[]"></td>
-                                                <td><input  style="max-width: 100px" value="<?=(!empty($newDataArray['1_'.$groupId.'_'.$i.'_5']))?$newDataArray['1_'.$groupId.'_'.$i.'_5']:''?>" type="text" name="full[]"></td>
-                                                <td><input  style="max-width: 100px" value="<?=(!empty($newDataArray['2_'.$groupId.'_'.$i.'_5']))?$newDataArray['2_'.$groupId.'_'.$i.'_5']:''?>" type="text" name="full_ur[]"></td>
+                                                <td style="max-width: 60px" ><input value="{{$i}}" type="hidden" name="qty[]">{{$i}}</td>
+                                                <td><input  style="max-width: 60px" value="<?=(!empty($newDataArray['1_'.$groupId.'_'.$i.'_1']))?$newDataArray['1_'.$groupId.'_'.$i.'_1']:''?>" type="text" name="mini[]"></td>
+                                                <td><input  style="max-width: 60px" value="<?=(!empty($newDataArray['2_'.$groupId.'_'.$i.'_1']))?$newDataArray['2_'.$groupId.'_'.$i.'_1']:''?>" type="text" name="mini_ur[]"></td>
+                                                <td><input  style="max-width: 60px" value="<?=(!empty($newDataArray['1_'.$groupId.'_'.$i.'_2']))?$newDataArray['1_'.$groupId.'_'.$i.'_2']:''?>" type="text" name="quater[]"></td>
+                                                <td><input  style="max-width: 60px" value="<?=(!empty($newDataArray['2_'.$groupId.'_'.$i.'_2']))?$newDataArray['2_'.$groupId.'_'.$i.'_2']:''?>" type="text" name="quater_ur[]"></td>
+                                                <td><input  style="max-width: 60px" value="<?=(!empty($newDataArray['1_'.$groupId.'_'.$i.'_3']))?$newDataArray['1_'.$groupId.'_'.$i.'_3']:''?>" type="text" name="half[]"></td>
+                                                <td><input  style="max-width: 60px" value="<?=(!empty($newDataArray['2_'.$groupId.'_'.$i.'_3']))?$newDataArray['2_'.$groupId.'_'.$i.'_3']:''?>" type="text" name="half_ur[]"></td>
+                                                <td><input  style="max-width: 60px" value="<?=(!empty($newDataArray['1_'.$groupId.'_'.$i.'_4']))?$newDataArray['1_'.$groupId.'_'.$i.'_4']:''?>" type="text" name="light[]"></td>
+                                                <td><input  style="max-width: 60px" value="<?=(!empty($newDataArray['2_'.$groupId.'_'.$i.'_4']))?$newDataArray['2_'.$groupId.'_'.$i.'_4']:''?>" type="text" name="light_ur[]"></td>
+                                                <td><input  style="max-width: 60px" value="<?=(!empty($newDataArray['1_'.$groupId.'_'.$i.'_5']))?$newDataArray['1_'.$groupId.'_'.$i.'_5']:''?>" type="text" name="full[]"></td>
+                                                <td><input  style="max-width: 60px" value="<?=(!empty($newDataArray['2_'.$groupId.'_'.$i.'_5']))?$newDataArray['2_'.$groupId.'_'.$i.'_5']:''?>" type="text" name="full_ur[]"></td>
                                             </tr>
                                             @endfor
                                         </tbody>

@@ -106,7 +106,7 @@ class PalletController
                 $pallet = new Palletrate();
                 $pallet->group_id = $groupID;
                 $pallet->service_type_id = 1;
-                $pallet->product_id = 2;
+                $pallet->product_id = 3;
                 $pallet->quantity = $qty;
                 $pallet->price = $half[$key];
                 $pallet->created_date = Carbon::now();

@@ -116,17 +116,17 @@
                                     <tbody>
                                         @for($i = 1; $i <= 10; $i++)
                                         <tr>
-                                            <td style="max-width: 100px" ><input value="{{$i}}" type="hidden" name="qty[]">{{$i}}</td>
-                                            <td><input  style="max-width: 100px" type="text" name="mini[]"></td>
-                                            <td><input  style="max-width: 100px" type="text" name="mini_ur[]"></td>
-                                            <td><input  style="max-width: 100px" type="text" name="quater[]"></td>
-                                            <td><input  style="max-width: 100px" type="text" name="quater_ur[]"></td>
-                                            <td><input  style="max-width: 100px" type="text" name="half[]"></td>
-                                            <td><input  style="max-width: 100px" type="text" name="half_ur[]"></td>
-                                            <td><input  style="max-width: 100px" type="text" name="light[]"></td>
-                                            <td><input  style="max-width: 100px" type="text" name="light_ur[]"></td>
-                                            <td><input  style="max-width: 100px" type="text" name="full[]"></td>
-                                            <td><input  style="max-width: 100px" type="text" name="full_ur[]"></td>
+                                            <td style="max-width: 60px" ><input value="{{$i}}" type="hidden" name="qty[]">{{$i}}</td>
+                                            <td><input  style="max-width: 60px" type="text" name="mini[]"></td>
+                                            <td><input  style="max-width: 60px" type="text" name="mini_ur[]"></td>
+                                            <td><input  style="max-width: 60px" type="text" name="quater[]"></td>
+                                            <td><input  style="max-width: 60px" type="text" name="quater_ur[]"></td>
+                                            <td><input  style="max-width: 60px" type="text" name="half[]"></td>
+                                            <td><input  style="max-width: 60px" type="text" name="half_ur[]"></td>
+                                            <td><input  style="max-width: 60px" type="text" name="light[]"></td>
+                                            <td><input  style="max-width: 60px" type="text" name="light_ur[]"></td>
+                                            <td><input  style="max-width: 60px" type="text" name="full[]"></td>
+                                            <td><input  style="max-width: 60px" type="text" name="full_ur[]"></td>
                                         </tr>
                                         @endfor
                                     </tbody>
