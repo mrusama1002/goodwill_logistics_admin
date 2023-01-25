@@ -22,10 +22,10 @@
 
                             <div class="form-group">
                                 <label class="col-sm-2  col-form-label">
-                                    Group
+                                    Zones
                                 </label>
                                 <select name="group" id="group" class="form-control">
-                                    <option value>Select Group</option>
+                                    <option value>Select Zones</option>
                                     @foreach($postCodeGroupList as $postCodeGroup)
                                         <option
                                             value="{{ $postCodeGroup->group_id }}" {{ ( $postCodeGroup->group_id == $postcode->group_id) ? 'selected' : '' }}>{{ $postCodeGroup->group_name }}</option>

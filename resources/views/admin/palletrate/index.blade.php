@@ -41,7 +41,7 @@
                                     <thead>
                                     <tr>
 
-                                        <th>Group</th>
+                                        <th>Zones</th>
                                         <th>Last Modified</th>
                                         <th>Action</th>
                                     </tr>

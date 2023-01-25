@@ -24,10 +24,10 @@ class PostcodeGroupController
     public function store(Request $request)
     {
         $request->validate([
-            'postcodegroup' => 'required',
+            'zones' => 'required',
         ]);
             $pcgroup = new PostcodeGroup();
-            $pcgroup->group_name = $request->postcodegroup;
+            $pcgroup->group_name = $request->zones;
             $pcgroup->save();
         return redirect()->route('postcode-group.index');
     }

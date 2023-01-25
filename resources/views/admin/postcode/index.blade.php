@@ -42,7 +42,7 @@
                                     <thead>
                                     <tr>
                                         <th>Post Code</th>
-                                        <th>Group Name</th>
+                                        <th>Zones</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>

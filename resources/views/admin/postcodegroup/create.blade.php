@@ -11,10 +11,10 @@
                             method="post">
                             @csrf
                             <div class="form-group">
-                                <label for="postcodegroup">Post Code Group</label>
-                                <textarea id="postcodegroup" name="postcodegroup" class="form-control"></textarea>
+                                <label for="zones">Zones </label>
+                                <textarea id="zones" name="zones" class="form-control"></textarea>
                                 <p>Insert by comma seprated</p>
-                                @error('postcodegroup')
+                                @error('zones')
                                 <span class="text-danger">{{$message}}</span>
                                 @enderror
                             </div>

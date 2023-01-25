@@ -35,13 +35,12 @@
 
                             <div class="form-group row">
                                 <label class="col-sm-2  col-form-label">
-                                    Group
+                                    Zones
                                 </label>
                                 
                                 <div class="col-sm-10">
-                                    <select name="group_id" class="form-control">
+                                    <select name="group_id" id="zone" class="form-control">
                                         @foreach($groups as $group)
-
                                             <option value="{{$group->group_id}}" {{$group->group_id == $groupId  ? 'Selected' : ''}}>
                                                 {{$group->group_name}}
                                             </option>
@@ -185,7 +184,13 @@
     </div>
 
 @endsection
-
+@push('scripts')
+<script>
+    $('#zone').change(function() {
+        location.href = '/admin/pallet/'+ $(this).val()+'/edit';
+    })
+</script>
+@endpush
 <!-- <div class="card-body"> <form action="{{route('pallet.store')}}"
 method="post" id="posted" enctype="multipart/"> @csrf <div class="form-group">
 <label for="exampleInputEmail1">price</label> <input type="text" id="title"

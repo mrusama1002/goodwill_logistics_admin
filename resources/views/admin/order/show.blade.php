@@ -29,6 +29,8 @@
                             <p>{{@$orderDetail->colCountry}}</p>
                             <h5>Collection Option</h5>
                             <p>{{@$orderDetail->coloption->collection_option_name}}</p>
+                            <h5>Collection Instructions</h5>
+                            <p>{{@$orderDetail->colInstruction}}</p>
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
@@ -43,6 +45,8 @@
                             <p>{{@$orderDetail->dePhone}}</p>
                             <h5>Delivery Option</h5>
                             <p>{{@$orderDetail->deloption->delivery_option_name}}</p>
+                            <h5>Delivery Instructions</h5>
+                            <p>{{@$orderDetail->deInstruction}}</p>
 
                         </div>
                     </div>

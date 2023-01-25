@@ -20,14 +20,14 @@
 
                             <div class="form-group row">
                                 <label class="col-sm-2  col-form-label">
-                                    Group
+                                    Zones
                                 </label>
                                 <div class="col-sm-10">
-                                    <select name="group_id" class="form-control">
+                                    <select name="group_id" class="form-control" required>
+                                        <option value="">Select Zone</option>
                                         @foreach($groups as $group)
-
                                             <option value="{{$group->group_id}}">
-                                                {{$group->group_name}}
+                                                {{$group->group_name ?? 'Not data found'}}
                                             </option>
                                         @endforeach
 
@@ -38,61 +38,6 @@
 
                                 </div>
                             </div>
-{{-- 
-                            <div class="form-group row">
-                                <label class="col-sm-2  col-form-label">
-                                    Service Type
-                                </label>
-                                <div class="col-sm-10">
-                                    <select name="service_type_id" class="form-control">
-                                        @foreach($Servicetypes as $Servicetype)
-
-                                            <option
-                                                value="{{$Servicetype->service_type_id}}">{{$Servicetype->service_name}}
-                                            </option>
-                                        @endforeach
-
-                                    </select>
-
-                                </div>
-                            </div>
-                            
-                            <div class="form-group row">
-                                <label class="col-sm-2  col-form-label">
-                                    Product
-                                </label>
-                                <div class="col-sm-10">
-                                    <select name="product_id" class="form-control">
-                                        @foreach($products as $product)
-
-                                            <option
-                                                value="{{$product->product_id}}">{{$product->product_name}}
-                                            </option>
-                                        @endforeach
-
-                                    </select>
-
-                                </div>
-                            </div>
-                            
-                             <div class="form-group row">
-                                <label class="col-sm-2  col-form-label">
-                                    Quantity
-                                </label>
-                                <div class="col-sm-10">
-                                   <input type="number" id="qty" name="qty" class="form-control" required="">
-                                </div>
-                            </div>
-                            
-                            
-                            <div class="form-group row">
-                                <label class="col-sm-2  col-form-label">
-                                    Price
-                                </label>
-                                <div class="col-sm-10">
-                                   <input type="text" id="price" name="price" class="form-control" required="">
-                                </div>
-                            </div> --}}
                             <div class="row">
                             <div class="col-12">
                                 <div class="table-responsives mt-2">

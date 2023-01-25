@@ -21,6 +21,7 @@ class OrderController
     public function show($id)
     {
         $orderDetail = Order::with('transaction', 'orderdetail', 'coloption', 'deloption')->find($id);
+        $orderDetail->update(['Visited' => 1]);
         return view('admin.order.show', compact('orderDetail'));
     }
 

@@ -12,7 +12,7 @@
                             @csrf
                             @method('put')
                             <div class="form-group">
-                                <label for="postcodegroup">Post Code Group</label>
+                                <label for="postcodegroup">Zones</label>
                                 <input id="postcodegroup" name="postcodegroup" class="form-control" value="{{ $postCodeGroup->group_name }}">
                                 @error('postcodegroup')
                                 <div class="alert alert-danger">{{ $message }}</div>

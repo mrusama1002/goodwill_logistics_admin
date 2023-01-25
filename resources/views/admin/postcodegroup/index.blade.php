@@ -30,17 +30,17 @@
                                     <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
                                 </div>
                             </div>
-                            <h4 class="mt-0 header-title"><h1>Post Code Group List</h1></h4>
+                            <h4 class="mt-0 header-title"><h1> Zones List</h1></h4>
 
 
-                            <a href="{{route('postcode-group.create')}}" class="btn btn-primary mb-2">Add Post Code Group</a>
+                            <a href="{{route('postcode-group.create')}}" class="btn btn-primary mb-2">Add Zones</a>
 
                             <div class="table-responsive">
                                 <table id="postTable" class="table table-stripe table-light mb-0">
                                     <thead>
                                     <tr>
-                                        <th>Group Id</th>
-                                        <th>Post Code Group</th>
+                                        <th>Id</th>
+                                        <th>Zones</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>

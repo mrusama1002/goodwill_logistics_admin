@@ -10,6 +10,7 @@ use \App\Models\Product;
 use \App\Models\Postcode;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
+use DB;
 use Carbon\Carbon;
 
 class PalletController
@@ -24,7 +25,9 @@ class PalletController
 
     {
         $Servicetypes = ServiceType::all();
-        $groups = Postgroup::all();
+        $groups = Postgroup::select('group_id','group_name')
+        ->whereNotIn('group_id',[DB::raw('select group_id from palletrate group by group_id')])
+        ->get();
         $products = Product::all();
         return view('admin.palletrate.create', compact('Servicetypes', 'groups', 'products'));
     }
