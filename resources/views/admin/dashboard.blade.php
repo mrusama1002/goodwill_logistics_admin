@@ -290,9 +290,7 @@
                                             </td>
                                         </tr>
                                     @empty
-                                        <tr>
-                                            <td>No Data Found</td>
-                                        </tr>
+                                       
                                     @endforelse
 
                                     </tbody>
