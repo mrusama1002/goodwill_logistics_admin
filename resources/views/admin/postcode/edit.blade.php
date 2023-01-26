@@ -6,6 +6,13 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="card-body">
+                        @if(empty($postCodeGroupList->postcodes->toArray()))
+                        <div class="col-12">
+                            <div class="alert alert-danger">
+                                <span>Please add postcode first</span>
+                            </div>
+                        </div>
+                        @endif
                         <form
                             action="{{route('postcode.update', $postCodeGroupList->group_id)}}"
                             method="post">

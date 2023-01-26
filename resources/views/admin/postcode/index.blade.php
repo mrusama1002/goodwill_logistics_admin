@@ -50,10 +50,10 @@
                                     @foreach($postcodes as $key => $postcode)
                                         <tr>
                                             <td>{{ $key+1 }}</td>
-                                            <td>{{ $postcode->group_name }} </br> (
+                                            <td>{{ $postcode->group_name }} </br> 
                                                 @foreach($postcode->postcodes as $value)
-                                                {{$value->post_code.','}}
-                                                @endforeach )
+                                                 {{$value->post_code.','}} 
+                                                @endforeach 
                                             </td>
                                             <td><a href="{{route('postcode.edit',
                                 ['postcode'=>$postcode->group_id])}}"><i class="fa fa-pencil-alt mr-2"></i></a>
