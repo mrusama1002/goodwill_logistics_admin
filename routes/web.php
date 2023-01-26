@@ -43,6 +43,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function ()
 
 
     Route::resource('postcode', PostcodeController::class);
+    Route::get('postcodes/delete/{id}', [PostcodeController::class, 'delete'])->name('postcodes.delete');
     Route::resource('postcode-group', PostCodeGroupController::class);
 
 

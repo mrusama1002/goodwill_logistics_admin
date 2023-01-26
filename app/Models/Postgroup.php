@@ -16,4 +16,9 @@ class Postgroup extends Model
     {
         return $this->belongsTo(Palletrate::class, 'group_id' ,'group_id');
     }
+
+    public function postcodes()
+    {
+        return $this->hasMany(Postcode::class, 'group_id' ,'group_id');
+    }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\PostcodeGroup;
+use App\Models\Postgroup;
 use Illuminate\Http\Request;
 
 class PostcodeGroupController
@@ -10,7 +10,7 @@ class PostcodeGroupController
 
     public function index()
     {
-        $postcodesgroup = PostcodeGroup::all();
+        $postcodesgroup = Postgroup::all();
         return view('admin.postcodegroup.index', compact('postcodesgroup'));
     }
 
@@ -26,7 +26,7 @@ class PostcodeGroupController
         $request->validate([
             'zones' => 'required',
         ]);
-            $pcgroup = new PostcodeGroup();
+            $pcgroup = new Postgroup();
             $pcgroup->group_name = $request->zones;
             $pcgroup->save();
         return redirect()->route('postcode-group.index');
@@ -42,7 +42,7 @@ class PostcodeGroupController
 
     public function edit($id)
     {
-        $postCodeGroup = PostcodeGroup::find($id);
+        $postCodeGroup = Postgroup::find($id);
         return view('admin.postcodegroup.edit', compact('postCodeGroup'));
     }
 
@@ -53,7 +53,7 @@ class PostcodeGroupController
             'postcodegroup' => 'required',
         ]);
 
-        $pcgroup = PostcodeGroup::find($id);
+        $pcgroup = Postgroup::find($id);
         $pcgroup->group_name = $request->postcodegroup;
         $pcgroup->save();
     return redirect()->route('postcode-group.index');
@@ -62,7 +62,7 @@ class PostcodeGroupController
 
     public function destroy($id)
     {
-        $pcgroup = PostcodeGroup::find($id);
+        $pcgroup = Postgroup::find($id);
         $pcgroup->delete();
         return redirect()->route('postcode-group.index');
     }

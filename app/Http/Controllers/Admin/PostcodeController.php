@@ -11,7 +11,8 @@ class PostcodeController
 
     public function index()
     {
-        $postcodes = Postcode::with('group')->get();
+        $postcodes = Postgroup::with('postcodes')->get();
+        // dd($postcodes);
         return view('admin.postcode.index', compact('postcodes'));
     }
 
@@ -54,10 +55,8 @@ class PostcodeController
 
     public function edit($id)
     {
-
-        $postcode = Postcode::where('id', $id)->first();
-        $postCodeGroupList = Postgroup::all();
-        return view('admin.postcode.edit', compact('postcode', 'postCodeGroupList'));
+        $postCodeGroupList = Postgroup::with('postcodes')->find($id);
+        return view('admin.postcode.edit', compact('postCodeGroupList'));
     }
 
 
@@ -67,20 +66,19 @@ class PostcodeController
             'postcode' => 'required',
             'group' => 'required',
         ]);
-
-        $postcode = Postcode::where('id', $id)->first();
+        foreach($request->postcodeID as $key => $postcodeid){
+        $postcode = Postcode::where('id', $postcodeid);
         $postcode->update([
-            'post_code' => $request->postcode,
-            'group' => $request->group,
+            'post_code' => $request->postcode[$key],
         ]);
-        return redirect()->route('postcode.index');
+    }
+    return redirect()->route('postcode.index');
     }
 
-
-    public function destroy($id)
+    public function delete($id)
     {
         $postcode = Postcode::where('id', $id)->first();
         $postcode->delete();
-        return redirect()->route('postcode.index');
+        return redirect()->back();
     }
 }

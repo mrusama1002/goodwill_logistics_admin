@@ -41,21 +41,25 @@
                                 <table id="postTable" class="table table-stripe table-light mb-0">
                                     <thead>
                                     <tr>
-                                        <th>Post Code</th>
-                                        <th>Zones</th>
+                                        <th>#</th>
+                                        <th>Zones (Post Code)</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($postcodes as $postcode)
+                                    @foreach($postcodes as $key => $postcode)
                                         <tr>
-                                            <td>{{ $postcode->post_code }}</td>
-                                            <td>{{ $postcode->group->group_name }}</td>
+                                            <td>{{ $key+1 }}</td>
+                                            <td>{{ $postcode->group_name }} </br> (
+                                                @foreach($postcode->postcodes as $value)
+                                                {{$value->post_code.','}}
+                                                @endforeach )
+                                            </td>
                                             <td><a href="{{route('postcode.edit',
-                                ['postcode'=>$postcode->id])}}"><i class="fa fa-pencil-alt mr-2"></i></a>
-                                                <a href="#"
-                                                   data-route="{{route('postcode.destroy', ['postcode'=>$postcode->id])}}"
-                                                   class="delete"><i class="fa fa-trash-alt text-danger"></i></a>
+                                ['postcode'=>$postcode->group_id])}}"><i class="fa fa-pencil-alt mr-2"></i></a>
+                                                {{-- <a href="#"
+                                                   data-route="{{route('postcode.destroy', ['postcode'=>1])}}"
+                                                   class="delete"><i class="fa fa-trash-alt text-danger"></i></a> --}}
                                             </td>
                                         </tr>
                                     @endforeach
