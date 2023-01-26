@@ -9,7 +9,7 @@
                         @if(empty($postCodeGroupList->postcodes->toArray()))
                         <div class="col-12">
                             <div class="alert alert-danger">
-                                <span>Please add postcode first</span>
+                                <span>Please add postcode first  click <a href="{{route('postcode.create')}}"> here </a></span>
                             </div>
                         </div>
                         @endif
