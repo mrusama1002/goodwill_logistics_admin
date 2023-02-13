@@ -93,7 +93,7 @@
                                 <hr>
                             </div>
                             <h5>Transaction Id</h5>
-                            <p class="d-flex">{{$orderDetail->transaction->ReferenceId}}</p>
+                            <p class="d-flex">{{@$orderDetail->transaction->ReferenceId}}</p>
                             <h5>Status</h5>
                             <p class="d-flex">{{@$orderDetail->transaction->Status == 0 ? 'Unpaid':'paid'}}</p>
                         </div>
